@@ -12,7 +12,8 @@ import { Container, Title, Column, TitleLogin, SubtitleLogin, EsqueciText, Criar
 
 const Login = () => {
 
-    const navigate = useNavigate()
+  
+    const navigate = useNavigate();
 
     const { control, handleSubmit, formState: { errors  } } = useForm({
         reValidateMode: 'onChange',
@@ -36,6 +37,13 @@ const Login = () => {
 
     console.log('errors', errors);
 
+    const handleClickSignIn = () => {
+        navigate('/feed')
+    }
+    const Conect = ()=>{
+        navigate('/Cadastro')
+    }
+
     return (<>
         <Header />
         <Container>
@@ -52,11 +60,11 @@ const Login = () => {
                     {errors.email && <span>E-mail é obrigatório</span>}
                     <Input type="password" placeholder="Senha" leftIcon={<MdLock />}  name="senha" control={control} />
                     {errors.senha && <span>Senha é obrigatório</span>}
-                    <Button title="Entrar" variant="secondary" type="submit"/>
+                    <Button title="Entrar" variant="secondary" type="submit" onClick={handleClickSignIn}/>
                 </form>
                 <Row>
                     <EsqueciText>Esqueci minha senha</EsqueciText>
-                    <CriarText>Criar Conta</CriarText>
+                    <CriarText onClick={Conect}>Criar Conta</CriarText>
                 </Row>
                 </Wrapper>
             </Column>
